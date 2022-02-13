@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osku.OskuViewController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab closable="false" text=" Opiskelijat ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutX="13.0" layoutY="183.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="91.0" text="Etunimi" />
+                        <Label layoutX="30.0" layoutY="127.0" text="Sukunimi" />
+                        <Label layoutX="30.0" layoutY="34.0" text="Lisää opiskelija">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAddStuFname" layoutX="131.0" layoutY="86.0" prefHeight="27.0" prefWidth="204.0" />
+                        <TextField fx:id="txtAddStuLname" layoutX="131.0" layoutY="122.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Button layoutX="372.0" layoutY="122.0" mnemonicParsing="false" onAction="#addStudentButtonClicked" text="Lisää" />
+                        <Label layoutX="31.0" layoutY="207.0" text="Muuta opiskelijan tietoja">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="261.0" text="Hae opiskelija" />
+                        <Label layoutX="31.0" layoutY="317.0" text="Etunimi" />
+                        <TextField fx:id="txtModifyStuFname" disable="true" layoutX="132.0" layoutY="312.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Label layoutX="30.0" layoutY="354.0" text="Sukunimi" />
+                        <TextField fx:id="txtModifyStuLname" disable="true" layoutX="131.0" layoutY="349.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Button fx:id="modifyStudentButton" disable="true" layoutX="372.0" layoutY="349.0" mnemonicParsing="false" onAction="#modifyStudentButtonClicked" text="Muuta" />
+                        <Separator layoutX="13.0" layoutY="414.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="446.0" text="Poista opiskelija">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="491.0" text="Hae opiskelija" />
+                        <DialogPane fx:id="dialogPaneAddStudent" headerText="Lisätty :" layoutX="460.0" layoutY="59.0" prefHeight="104.0" prefWidth="300.0" />
+                        <DialogPane fx:id="dialogPaneModifyStudent" headerText="Muokattu: " layoutX="460.0" layoutY="256.0" prefHeight="104.0" prefWidth="300.0" />
+                        <DialogPane fx:id="dialogPaneDeleteStudent" headerText="Poistettu:" layoutX="460.0" layoutY="486.0" prefHeight="104.0" prefWidth="300.0" />
+                        <Button fx:id="dpAddStudentButton" disable="true" layoutX="723.0" layoutY="118.0" mnemonicParsing="false" onAction="#dpAddStudentButtonClicked" text="OK" />
+                        <Button fx:id="dpModifyStudentButton" disable="true" layoutX="723.0" layoutY="333.0" mnemonicParsing="false" onAction="#dpModifyStudentButtonClicked" text="OK" />
+                        <Button fx:id="dpDeleteStudentButton" disable="true" layoutX="723.0" layoutY="552.0" mnemonicParsing="false" onAction="#dpDeleteStudentButtonClicked" text="OK" />
+                        <ComboBox fx:id="comBoxModifyStudent" layoutX="133.0" layoutY="256.0" onMouseClicked="#modifyStudentSearch" prefHeight="27.0" prefWidth="204.0" />
+                        <Button layoutX="372.0" layoutY="256.0" mnemonicParsing="false" onAction="#selectStudentButtonClicked" text="Valitse" />
+                        <ComboBox fx:id="comBoxDeleteStudent" layoutX="133.0" layoutY="486.0" onMouseClicked="#deleteStudentSearch" prefHeight="27.0" prefWidth="200.0" />
+                        <Button layoutX="368.0" layoutY="486.0" mnemonicParsing="false" onAction="#deleteStudentButtonClicked" text="Poista" />
+                        <Label alignment="TOP_LEFT" layoutX="30.0" layoutY="547.0" prefHeight="73.0" prefWidth="433.0" text="Huom! Opiskelijan poisto poistaa myös opiskelijan suoritukset.">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab closable="false" text="Kurssit">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutX="13.0" layoutY="186.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="95.0" text="Kurssin nimi" />
+                        <Label layoutX="30.0" layoutY="131.0" text="Laajuus (op)" />
+                        <Label layoutX="30.0" layoutY="31.0" text="Lisää kurssi">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAddCourseName" layoutX="131.0" layoutY="90.0" prefHeight="27.0" prefWidth="204.0" />
+                        <TextField fx:id="txtAddCourseCredit" layoutX="131.0" layoutY="126.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Button layoutX="372.0" layoutY="126.0" mnemonicParsing="false" onAction="#addCourseButtonClicked" text="Lisää" />
+                        <Label layoutX="31.0" layoutY="211.0" text="Muuta kurssin tietoja">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="261.0" text="Hae kurssi" />
+                        <Label layoutX="31.0" layoutY="317.0" text="Kurssin nimi" />
+                        <TextField fx:id="txtModifyCourseName" disable="true" layoutX="132.0" layoutY="312.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Label layoutX="30.0" layoutY="354.0" text="Laajuus (op)" />
+                        <TextField fx:id="txtModifyCourseCredit" disable="true" layoutX="131.0" layoutY="349.0" prefHeight="27.0" prefWidth="204.0" />
+                        <Button layoutX="372.0" layoutY="256.0" mnemonicParsing="false" onAction="#selectCourseButtonClicked" text="Valitse" />
+                        <Button fx:id="modifyCourseButton" disable="true" layoutX="372.0" layoutY="349.0" mnemonicParsing="false" onAction="#modifyCourseButtonClicked" text="Muuta" />
+                        <Separator layoutX="13.0" layoutY="409.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="437.0" text="Poista kurssi">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="486.0" text="Hae kurssi" />
+                        <Button layoutX="374.0" layoutY="481.0" mnemonicParsing="false" onAction="#deleteCourseButtonClicked" text="Poista" />
+                        <DialogPane fx:id="dialogPaneAddCourse" headerText="Lisätty :" layoutX="460.0" layoutY="59.0" prefHeight="104.0" prefWidth="300.0" />
+                        <DialogPane fx:id="dialogPaneModifyCourse" headerText="Muokattu: " layoutX="460.0" layoutY="256.0" prefHeight="104.0" prefWidth="300.0" />
+                        <DialogPane fx:id="dialogPaneDeleteCourse" headerText="Poistettu:" layoutX="460.0" layoutY="481.0" prefHeight="104.0" prefWidth="300.0" />
+                        <Button fx:id="dpAddCourseButton" disable="true" layoutX="724.0" layoutY="128.0" mnemonicParsing="false" onAction="#dpAddCourseButtonClicked" text="OK" />
+                        <Button fx:id="dpModifyCourseButton" disable="true" layoutX="724.0" layoutY="351.0" mnemonicParsing="false" onAction="#dpModifyCourseButtonClicked" text="OK" />
+                        <Button fx:id="dpDeleteCourseButton" disable="true" layoutX="724.0" layoutY="553.0" mnemonicParsing="false" onAction="#dpDeleteCourseButtonClicked" text="OK" />
+                        <ComboBox fx:id="comBoxModifyCourse" layoutX="132.0" layoutY="256.0" onMouseClicked="#modifyCourseSearch" prefHeight="27.0" prefWidth="203.0" />
+                        <ComboBox fx:id="comBoxDeleteCourse" layoutX="132.0" layoutY="481.0" onMouseClicked="#deleteCourseSearch" prefHeight="27.0" prefWidth="203.0" />
+                        <Label alignment="TOP_LEFT" layoutX="30.0" layoutY="544.0" prefHeight="73.0" prefWidth="408.0" text="Huom! Kurssin poisto poistaa myös kurssin suoritukset.">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Suoritukset">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutX="13.0" layoutY="205.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="54.0" text="Opiskelija" />
+                        <Label layoutX="30.0" layoutY="129.0" text="Arvosana" />
+                        <Label layoutX="30.0" layoutY="166.0" text="Arviointi pvm" />
+                        <Label layoutX="30.0" layoutY="17.0" text="Lisää suoritus">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addAccoButton" disable="true" layoutX="370.0" layoutY="161.0" mnemonicParsing="false" onAction="#addAccoButtonClicked" text="Lisää" />
+                        <Label layoutX="31.0" layoutY="222.0" text="Muuta suoritus">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="selectModifyAccoButton" disable="true" layoutX="373.0" layoutY="296.0" mnemonicParsing="false" onAction="#selectModifyAccoButtonClicked" text="Valitse" />
+                        <Button fx:id="modifyAccoButton" disable="true" layoutX="374.0" layoutY="368.0" mnemonicParsing="false" onAction="#modifyAccoButtonClicked" text="Muuta" />
+                        <Separator layoutX="13.0" layoutY="415.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="435.0" text="Poista suoritus">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteAccoButton" disable="true" layoutX="375.0" layoutY="506.0" mnemonicParsing="false" onAction="#deleteAccoButtonClicked" text="Poista" />
+                        <DatePicker fx:id="datePickerAddAcco" layoutX="132.0" layoutY="161.0" onAction="#addAccoDatePicked" prefHeight="27.0" prefWidth="203.0" />
+                        <Label layoutX="30.0" layoutY="91.0" text="Kurssi" />
+                        <Label layoutX="30.0" layoutY="261.0" text="Opiskelija" />
+                        <Label layoutX="30.0" layoutY="336.0" text="Arvosana" />
+                        <Label layoutX="30.0" layoutY="373.0" text="Arviointi pvm" />
+                        <DatePicker fx:id="datePickerModifyAcco" disable="true" layoutX="132.0" layoutY="368.0" onAction="#modifyAccoDatePicked" prefHeight="27.0" prefWidth="203.0" />
+                        <Label layoutX="30.0" layoutY="298.0" text="Kurssi" />
+                        <Label layoutX="31.0" layoutY="474.0" text="Opiskelija" />
+                        <Label layoutX="31.0" layoutY="511.0" text="Kurssi" />
+                        <ComboBox fx:id="comBoxAddAccoGrade" layoutX="132.0" layoutY="124.0" onMouseClicked="#comBoxAddAccoGradeClicked" prefHeight="27.0" prefWidth="203.0" />
+                        <ComboBox fx:id="comBoxModifyAccoGrade" disable="true" layoutX="132.0" layoutY="331.0" onMouseClicked="#comBoxModifyAccoGradeClicked" prefHeight="27.0" prefWidth="202.0" />
+                        <Button fx:id="okAddAccoButton" disable="true" layoutX="724.0" layoutY="159.0" mnemonicParsing="false" onAction="#okAddAccoButtonClicked" text="OK" />
+                        <Button fx:id="okModifyAccoButton" disable="true" layoutX="724.0" layoutY="371.0" mnemonicParsing="false" onAction="#okModifyAccoButtonClicked" text="OK" />
+                        <Button fx:id="okDeleteAccoButton" disable="true" layoutX="724.0" layoutY="559.0" mnemonicParsing="false" onAction="#okDeleteAccoButtonClicked" text="OK" />
+                        <ComboBox fx:id="comBoxAddAccoStudent" layoutX="133.0" layoutY="49.0" onMouseClicked="#comBoxSearchAddAccoStudent" prefHeight="27.0" prefWidth="203.0" />
+                        <ComboBox fx:id="comBoxModifyAccoStudent" layoutX="133.0" layoutY="256.0" onMouseClicked="#comBoxSearchModifyAccoStudent" prefHeight="27.0" prefWidth="202.0" />
+                        <ComboBox fx:id="comBoxAddAccoCourse" layoutX="132.0" layoutY="87.0" onMouseClicked="#comBoxSearchAddAccoCourse" prefHeight="27.0" prefWidth="203.0" />
+                        <ComboBox fx:id="comBoxModifyAccoCourse" layoutX="132.0" layoutY="295.0" onMouseClicked="#comBoxSearchModifyAccoCourse" prefHeight="27.0" prefWidth="203.0" />
+                        <ComboBox fx:id="comBoxDeleteAccoStudent" layoutX="132.0" layoutY="469.0" onMouseClicked="#comBoxSelectDeleteAccoStudent" prefHeight="27.0" prefWidth="202.0" />
+                        <ComboBox fx:id="comBoxDeleteAccoCourse" layoutX="132.0" layoutY="506.0" onMouseClicked="#comBoxSelectDeleteAccoCourse" prefHeight="27.0" prefWidth="203.0" />
+                        <Label fx:id="labelDeleteAcco" alignment="TOP_LEFT" layoutX="470.0" layoutY="487.0" prefHeight="77.0" prefWidth="291.0" />
+                        <Label alignment="TOP_LEFT" layoutX="470.0" layoutY="466.0" text="Poistettu:" />
+                        <Label fx:id="labelModifyAcco" alignment="TOP_LEFT" layoutX="470.0" layoutY="279.0" prefHeight="93.0" prefWidth="291.0" />
+                        <Label alignment="TOP_LEFT" layoutX="470.0" layoutY="254.0" text="Muokattu:" />
+                        <Label fx:id="labelAddAcco" alignment="TOP_LEFT" layoutX="470.0" layoutY="67.0" prefHeight="93.0" prefWidth="291.0" />
+                        <Label alignment="TOP_LEFT" layoutX="470.0" layoutY="42.0" text="Lisätty:" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Haku">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutX="14.0" layoutY="314.0" prefHeight="10.0" prefWidth="772.0" />
+                        <Label layoutX="30.0" layoutY="66.0" text="Valitse opiskelija" />
+                        <Label layoutX="30.0" layoutY="24.0" text="Opiskelijan suoritukset">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonSearchStudentAccos" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" onAction="#searchStudentAccosButtonClicked" text="Hae" />
+                        <Label layoutX="30.0" layoutY="377.0" text="Valitse kurssi" />
+                        <Label layoutX="30.0" layoutY="338.0" text="Kurssin suoritukset">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonSearchCoursesAccos" layoutX="372.0" layoutY="372.0" mnemonicParsing="false" onAction="#searchCoursesAccosButtonClicked" text="Hae" />
+                        <ComboBox fx:id="comBoxSelectStudentsAccos" layoutX="144.0" layoutY="61.0" onMouseClicked="#comBoxSelectStudentsAccosClicked" prefHeight="27.0" prefWidth="204.0" />
+                        <ComboBox fx:id="comBoxSelectCoursesAccos" layoutX="144.0" layoutY="372.0" onMouseClicked="#comBoxSelectCoursesAccosClicked" prefHeight="27.0" prefWidth="204.0" />
+                        <StackPane layoutX="30.0" layoutY="103.0" prefHeight="206.0" prefWidth="745.0">
+                           <children>
+                              <TableView fx:id="tblViewStudentsAccos" prefHeight="206.0" prefWidth="829.0">
+                                 <columns>
+                                    <TableColumn fx:id="stuAccosCourseID" prefWidth="113.0" text="Kurssinumero" />
+                                    <TableColumn fx:id="stuAccosCourseName" prefWidth="260.0" text="Kurssin nimi" />
+                                    <TableColumn fx:id="stuAccosCredit" prefWidth="130.0" text="Opintopisteet" />
+                                    <TableColumn fx:id="stuAccosGrade" prefWidth="98.0" text="Arvosana" />
+                                    <TableColumn fx:id="stuAccosDate" prefWidth="143.0" text="Suoritus pvm" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="30.0" layoutY="413.0" prefHeight="205.0" prefWidth="743.0">
+                           <children>
+                              <TableView fx:id="tblViewCoursesAccos" prefHeight="197.0" prefWidth="734.0">
+                                 <columns>
+                                    <TableColumn fx:id="courseAccosStudentID" prefWidth="113.0" text="Opiskelijanumero" />
+                                    <TableColumn fx:id="courseAccosFname" prefWidth="201.0" text="Etunimi" />
+                                    <TableColumn fx:id="courseAccosLname" prefWidth="189.0" text="Sukunimi" />
+                                    <TableColumn fx:id="courseAccosGrade" prefWidth="95.0" text="Arvosana" />
+                                    <TableColumn fx:id="courseAccosDate" prefWidth="144.0" text="Suoritus pvm" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </StackPane>
+                        <Button fx:id="btnClearTableStudentsAccos" layoutX="675.0" layoutY="61.0" mnemonicParsing="false" onAction="#btnClearTableStudentsAccosClicked" text="Tyhjennä taulu" />
+                        <Button fx:id="btnClearTableCourseAccos" layoutX="671.0" layoutY="372.0" mnemonicParsing="false" onAction="#btnClearTableCourseAccosClicked" text=" Tyhjennä taulu" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menuOsku" mnemonicParsing="false" text="Osku">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeMenuItemClicked" text="Sulje" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Tietoja">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#tietojaMenuItemClicked" text="Tietoja Oskusta" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
